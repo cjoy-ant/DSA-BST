@@ -26,15 +26,15 @@ const main = () => {
   // removes node 4
   // node 6 moves up in the tree
 
-  const easyQuestion = (input) => {
-    for (let value of input) {
-      BST.insert(value, null);
-    }
-  };
+  // const easyQuestion = (input) => {
+  //   for (let value of input) {
+  //     BST.insert(value, null);
+  //   }
+  // };
 
-  console.log(
-    easyQuestion(["E", "A", "S", "Y", "Q", "U", "E", "S", "T", "I", "O", "N"])
-  );
+  // console.log(
+  //   easyQuestion(["E", "A", "S", "Y", "Q", "U", "E", "S", "T", "I", "O", "N"])
+  // );
 
   // 4. What does this program do?
   const tree = (t) => {
@@ -43,12 +43,36 @@ const main = () => {
     }
     return tree(t.left) + t.value + tree(t.right);
   };
-  
+
   console.log(tree(BST));
   /* ANSWER: recursive function
     adds up the keys of the tree
     Time complexity: O(log(n)) -- traverses the whole tree */
 
+  // 5. Height of a BST
+  const BSTheight = (t) => {
+    if (!t.key) {
+      return 0;
+    }
+    // recursive function
+    // if root as left or right node + 1
+    if (t.left && t.right) {
+      if (BSTheight(t.left) > BSTheight(t.right)) {
+        return BSTheight(t.left) + 1;
+      }
+      if (BSTheight(t.left) < BSTheight(t.right)) {
+        return BSTheight(t.right) + 1;
+      }
+    } else if (t.left) {
+      return BSTheight(t.left) + 1;
+    } else if (t.right) {
+      return BSTheight(t.right) + 1;
+    } else {
+      return 0;
+    }
+  };
+
+  console.log(BSTheight(BST));
 };
 
 module.exports = main;
