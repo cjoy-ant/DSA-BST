@@ -73,6 +73,32 @@ const main = () => {
   };
 
   console.log(BSTheight(BST));
+
+  // 6. Is it a BST?
+  // does it follow the rules of a BST
+  // left child < parent < right child
+  const isBST = (t) => {
+    if (!t) {
+      return false;
+    }
+    if (t.right) {
+      if (t.right.key > t.key) {
+        isBST(t.right);
+      } else {
+        return false;
+      }
+    }
+    if (t.left) {
+      if (t.left.key < t.key) {
+        isBST(t.left);
+      } else {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  console.log(isBST(BST));
 };
 
 module.exports = main;
