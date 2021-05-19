@@ -124,6 +124,45 @@ const main = () => {
   };
 
   console.log(thirdLargest(BST));
+
+  // 8. Balanced BST
+  // nodes inserted equally on left and right branches
+  // no 2 leaves differ in distance from the root by > 1
+
+  // const balanced = (t) => {
+  //   if (!t) {
+  //     return;
+  //   }
+  // };
+
+  // console.log(balanced(BST));
+
+  // 9. Are they the same BSTs?
+  // don't actually construct the tree
+  // can use array or linked list
+  const sameBST = (input1, input2) => {
+    if (input1.length !== input2.length) {
+      return false;
+    }
+    let sorted1 = input1.sort(function (a, b) {
+      return a - b;
+    });
+    let sorted2 = input2.sort(function (a, b) {
+      return a - b;
+    });
+    for (let i = 0; i < input1.length; i++) {
+      if (sorted1[i] !== sorted2[i]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  let input1 = [3, 5, 4, 6, 1, 0, 2];
+  let input2 = [3, 1, 5, 2, 4, 6, 0];
+  let input3 = [3, 1, 4, 6, 9, 2, 5, 7];
+  console.log(sameBST(input1, input2)); // true
+  console.log(sameBST(input1, input3)); // false
 };
 
 module.exports = main;
