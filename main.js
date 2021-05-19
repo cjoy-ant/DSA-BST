@@ -36,6 +36,19 @@ const main = () => {
     easyQuestion(["E", "A", "S", "Y", "Q", "U", "E", "S", "T", "I", "O", "N"])
   );
 
+  // 4. What does this program do?
+  const tree = (t) => {
+    if (!t) {
+      return 0;
+    }
+    return tree(t.left) + t.value + tree(t.right);
+  };
+  
+  console.log(tree(BST));
+  /* ANSWER: recursive function
+    adds up the keys of the tree
+    Time complexity: O(log(n)) -- traverses the whole tree */
+
 };
 
 module.exports = main;
