@@ -99,6 +99,31 @@ const main = () => {
   };
 
   console.log(isBST(BST));
+
+  // 7. 3rd largest node
+  const thirdLargest = (t) => {
+    // stores keys from each node
+    const keys = [];
+    // helper function
+    // recursive call to traverse the tree
+    // pushes each keys to the array
+    const getKeys = (t) => {
+      if (!t) {
+        return "error: no tree";
+      }
+      keys.push(t.key);
+      getKeys(t.left);
+      getKeys(t.right);
+    };
+    // helper function call
+    getKeys(t);
+    keys.sort();
+    console.log(keys);
+    // length - 3 to get third largest
+    return keys[keys.length - 3];
+  };
+
+  console.log(thirdLargest(BST));
 };
 
 module.exports = main;
